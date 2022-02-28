@@ -23,6 +23,7 @@ func main() {
 	// 访问变量p的字段
 	fmt.Printf("%T\n", p)
 	fmt.Println(p.name)
+
 	var p2 person
 	p2.name = "理想"
 	p2.age = 18

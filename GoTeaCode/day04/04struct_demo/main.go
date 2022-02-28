@@ -24,6 +24,7 @@ func main() {
 	p.gender = "男"
 	f(p)
 	fmt.Println(p.gender) // 男
+
 	f2(&p)                // ox1241ac3
 	fmt.Println(p.gender) // 女
 	// 结构体指针1
@@ -34,6 +35,7 @@ func main() {
 	fmt.Printf("%T\n", p2)
 	fmt.Printf("%p\n", p2)  // p2保存的值就是一个内存地址
 	fmt.Printf("%p\n", &p2) // 求b2的内存地址
+
 	// 2. 结构体指针2
 	// 2.1 key-value初始化
 	var p3 = &person{
