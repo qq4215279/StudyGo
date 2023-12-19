@@ -3,7 +3,9 @@
 // @Desc
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /**
 1. 整型
@@ -41,12 +43,11 @@ import "fmt"
 
 6. byte和rune类型
 	6.1. uint8类型，或者叫 byte 型，代表一个ASCII码字符。
-		 rune类型，代表一个 UTF-8字符。
+		 rune类型，代表一个 UTF-8字符。 Go语言中为了处理非ASCII码类型的字符 定义了新的rune类型
 	6.2. 修改字符串: 要修改字符串，需要先将其转换成[]rune或[]byte，完成后再转换为string。无论哪种转换，都会重新分配内存，并复制字节数组。
 
-7. 类型转换。
-   强制类型转换的基本语法如下: T(表达式)
-
+7. 类型转换。Go语言中只有强制类型转换，没有隐式类型转换。该语法只能在两个类型之间支持相互转换的时候使用。
+   强制类型转换的基本语法如下: T(表达式) eg: n1 := 10 // int  var f = float64(n1)
 
 */
 
@@ -88,6 +89,62 @@ func boolDemo() {
 	fmt.Printf("%T value:%v\n", b2, b2)
 }
 
+func stringDemo() {
+	// \ 本来是具有特殊含义的，我应该告诉程序我写的\就是一个单纯的\
+	path := "'D:\\Go\\src\\code.oldboyedu.com\\studygo\\day01'"
+	fmt.Println(path)
+
+	s := "I'm ok"
+	fmt.Println(s)
+
+	// 多行的字符串
+	s2 := `
+世情薄
+				人情恶
+		雨送黄昏花易落
+	`
+	fmt.Println(s2)
+}
+
+// 修改字符串
+func byteRuneDemo() {
+	s := "Hello沙河사샤"
+	// len()求得是byte字节的数量
+	n := len(s) // 求字符串s的长度,把长度保存到变量n中
+	fmt.Println(n)
+
+	//for i := 0; i < len(s); i++ {
+	//	// fmt.Println(s[i])
+	//	fmt.Printf("%c\n", s[i]) // %c:字符
+	//}
+
+	// for _, c := range s { // 从字符串中拿出具体的字符
+	// 	fmt.Printf("%c\n", c) // %c:字符
+	// }
+
+	// "Hello" => 'H' 'e' 'l' 'l' 'o'
+	// 字符串修改
+	s2 := "白萝卜"      // => '白' '萝' '卜'
+	s3 := []rune(s2) // 把字符串强制转换成了一个rune切片
+	s3[0] = '红'
+	fmt.Println(string(s3)) // 红萝卜 把rune切片强制转换成字符串
+
+	c1 := "红"
+	c2 := '红' // rune(int32)
+	fmt.Printf("c1:%T c2:%T\n", c1, c2)
+	c3 := "H"       // string
+	c4 := byte('H') // byte(uint8)
+	fmt.Printf("c3:%T c4:%T\n", c3, c4)
+	fmt.Printf("%d\n", c4)
+
+}
+
 func main() {
 
+	// 强制类型转换
+	n1 := 10 // int
+	var f float64
+	f = float64(n1)
+	fmt.Println(f)
+	fmt.Printf("%T\n", f)
 }
