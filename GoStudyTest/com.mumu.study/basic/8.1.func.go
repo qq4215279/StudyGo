@@ -90,7 +90,7 @@ func sub(x, y int) int {
 }
 
 // 定义一个函数
-func f1() {
+func f11() {
 	// globalVal := 10
 	name := "理想"
 	// 函数中查找变量的顺序
@@ -109,7 +109,7 @@ func f(x, y, z int, k ...float64) (a int, b string) {
 }
 
 func main() {
-	f1()
+	f11()
 	// fmt.Println(name) // 函数内部定义的变脸只能在该函数内部使用
 
 	// 语句块作用域
