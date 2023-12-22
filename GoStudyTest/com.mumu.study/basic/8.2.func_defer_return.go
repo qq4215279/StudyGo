@@ -6,10 +6,10 @@ package main
 import "fmt"
 
 // Go语言中函数的return不是原子操作，在底层是分为两步来执行
-// 第一步：返回值赋值
-// defer
-// 第二步：真正的RET返回
-// 函数中如果存在defer，那么defer执行的时机是在第一步和第二步之间
+// 第一步: 返回值赋值
+// 第二步: defer
+// 第三步: 真正的RET返回
+// 函数中如果存在defer，那么defer执行的时机是在第一步和第三步之间
 
 func f1() int {
 	x := 5
@@ -31,7 +31,7 @@ func f3() (y int) {
 	defer func() {
 		x++ // 修改的是x
 	}()
-	return x // 1. 返回值 = y = x = 5 2. defer修改的是x 3. 真正的返回
+	return x // 1. 返回值 = y = x = 5  2. defer修改的是x  3. 真正的返回
 }
 
 func f4() (x int) {

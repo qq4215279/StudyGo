@@ -12,8 +12,9 @@ import "fmt"
 
 1. 指针地址和指针类型
 	每个变量在运行时都拥有一个地址，这个地址代表变量在内存中的位置。Go语言中使用&字符放在变量前面对变量进行“取地址”操作。
-	Go语言中的值类型: int、float、bool、string、array、struct 都有对应的指针类型，如：*int、*int64、*string等。
-	Go语言中的引用类型: slice、map、channel
+	- Go语言中的值类型: int、float、bool、string、array、struct 都有对应的指针类型，如：*int、*int64、*string等。
+	- Go语言中的引用类型: slice、map、channel
+	- Go语言中的指针类型: 通过&运算符得到的类型。eg: *int、*float、*bool、*string、*array、*struct
 	取变量指针的语法如下: ptr := &v    // v的类型为T
 		其中: v: 代表被取地址的变量，类型为T
 		  	  ptr: 用于接收地址的变量，ptr的类型就为*T，称做T的指针类型。*代表指针。

@@ -31,26 +31,27 @@ import "fmt"
 	  iota在const关键字出现时将被重置为0。const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。 使用iota能简化定义，在定义枚举时很有用。
 	TODO 介绍: https://www.cnblogs.com/zsy/p/5370052.html
 
-6. 内置函数介绍
-	6.1. close(c chan<- Type)  主要用来关闭channel
-	6.2. len(v Type) int	  用来求长度，比如: string、array、slice、map、channel
-		 cap(v Type) int
-	6.3. new(Type) *Type	  用来分配内存，主要用来分配值类型，比如int、struct。返回的是指针
-	6.4. make(t Type, size ...IntegerType) Type	  用来分配内存，主要用来分配引用类型，比如chan、map、slice
-	6.5. append(slice []Type, elems ...Type) []Type 用来追加元素到数组、slice中
-		 copy(dst, src []Type) int
-		 delete(m map[Type]Type1, key Type)
-		 print(args ...Type)
-		 println(args ...Type)
-		 complex(r, i FloatType) ComplexType
-		 real(c ComplexType) FloatType
-		 imag(c ComplexType) FloatType
+6. 内置函数:
+	append(slice []Type, elems ...Type) []Type 用来追加元素到数组、slice中
+	copy(dst, src []Type) int
+	close(c chan<- Type)  主要用来关闭channel
+	delete(m map[Type]Type1, key Type)
+	cap(v Type) int
+	len(v Type) int	  用来求长度，比如: string、array、slice、map、channel
+	new(Type) *Type	  用来分配内存，主要用来分配值类型，比如int、struct。返回的是指针
+	make(t Type, size ...IntegerType) Type	  用来分配内存，主要用来分配引用类型，比如chan、map、slice
 
-	6.6. panic(v interface{}) 和 recover() interface{}	用来做错误处理。
-		Go语言中目前（Go1.12）是没有异常机制，但是使用panic/recover模式来处理错误。 panic可以在任何地方引发，但 recover只有在defer调用的函数中有效。
+	complex(r, i FloatType) ComplexType
+	imag(c ComplexType) FloatType
+	real(c ComplexType) FloatType
+	print(args ...Type)
+	println(args ...Type)
+
+	func panic(v interface{}) 和 func recover() interface{}	用来做错误处理。
+		Go语言中目前（Go1.12）是没有异常机制，但是使用panic/recover模式来处理错误。 panic() 可以在任何地方引发，但 recover() 只有在 defer 调用的函数中有效。
 		注意：
-			recover() 必须搭配defer使用。
-			defer 一定要在可能引发 panic 的语句之前定义。
+			recover() 必须搭配 defer 使用。
+			defer 一定要在可能引发 panic() 的语句之前定义。
 
 */
 

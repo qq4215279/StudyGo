@@ -9,12 +9,12 @@ import (
 
 /**
 1. 整型
-	1.1. 按长度分为：int8、int16、int32、int64
-	1.2. 对应的无符号整型：uint8、uint16、uint32、uint64
+	1.1. 按长度分为: int8、int16、int32、int64
+	1.2. 对应的无符号整型: uint8、uint16、uint32、uint64
 	其中，uint8就是我们熟知的byte型，int16对应C语言中的short型，int64对应C语言中的long型。
 
 2. 浮点型
-	两种浮点型数：float32和float64。
+	两种浮点型数: float32和float64。
 	这两种浮点型数据格式遵循IEEE 754 标准：
 		float32 的浮点数的最大范围约为 3.4e38，可以使用常量定义：math.MaxFloat32。
 		float64 的浮点数的最大范围约为 1.8e308，可以使用一个常量定义：math.MaxFloat64。
@@ -25,7 +25,7 @@ import (
 
 4. 布尔值
 	布尔型数据只有true（真）和false（假）两个值。
-	注意：
+	注意:
 		布尔类型变量的默认值为false。
 		Go 语言中不允许将整型强制转换为布尔型.
 		布尔型无法参与数值运算，也无法与其他类型进行转换。
@@ -106,7 +106,7 @@ func stringDemo() {
 	fmt.Println(s2)
 }
 
-// 修改字符串
+// 6.2. 修改字符串
 func byteRuneDemo() {
 	s := "Hello沙河사샤"
 	// len()求得是byte字节的数量
@@ -140,11 +140,25 @@ func byteRuneDemo() {
 }
 
 func main() {
-
 	// 强制类型转换
 	n1 := 10 // int
 	var f float64
 	f = float64(n1)
 	fmt.Println(f)
 	fmt.Printf("%T\n", f)
+
+	fmt.Println("intDemo start...")
+	intDemo()
+
+	fmt.Println("floatDemo start...")
+	floatDemo()
+
+	fmt.Println("boolDemo start...")
+	boolDemo()
+
+	fmt.Println("stringDemo start...")
+	stringDemo()
+
+	fmt.Println("byteRuneDemo start...")
+	byteRuneDemo()
 }

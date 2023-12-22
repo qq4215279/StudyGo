@@ -10,7 +10,7 @@ import (
 
 /**
 反射 reflect
-在Go语言的反射机制中，任何接口值都由是一个具体类型和具体类型的值两部分组成的。
+在Go语言的反射机制中，任何接口值都由是一个具体类型 和 具体类型的值两部分组成的。
 在Go语言中反射的相关功能由内置的reflect包提供，任意接口值在反射中都可以理解为由 reflect.Type 和 reflect.Value 两部分组成，
 并且reflect包提供了 reflect.TypeOf 和 reflect.ValueOf 两个函数来获取任意对象的 Type 和 Value。
 
@@ -20,8 +20,8 @@ import (
 			注: Go语言的反射中像数组、切片、Map、指针等类型的变量，它们的.Name()都是返回空。
 	1.2. type.Kind()  获取种类(Kind)，就是指底层的类型。但在反射中，当需要区分指针、结构体等大品种的类型时，就会用到种类(Kind)。
 	1.3. 与结构体相关的方法:
-		1.3.1. type.Field(i int) StructField	根据索引，返回索引对应的结构体字段的信息。
-		1.3.2. type.NumField() int	返回结构体成员字段数量。
+		1.3.1. type.NumField() int	返回结构体成员字段数量。
+		1.3.2. type.Field(i int) StructField	根据索引，返回索引对应的结构体字段的信息。
 		1.3.3. type.FieldByName(name string) (StructField, bool)	根据给定字符串返回字符串对应的结构体字段的信息。
 		1.3.4. type.FieldByIndex(index []int) StructField	多层成员访问时，根据 []int 提供的每个结构体的字段索引，返回字段的信息。
 		1.3.5. type.FieldByNameFunc(match func(string) bool) (StructField, bool)	根据传入的匹配函数匹配需要的字段。
