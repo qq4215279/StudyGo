@@ -36,7 +36,7 @@ Go语言提供了一种自定义数据类型，可以封装多个基本数据类
 				age        int8
 			}
 
-3. 构体实例化: 只有当结构体实例化时，才会真正地分配内存。也就是必须实例化后才能使用结构体的字段。
+3. 结构体实例化: 只有当结构体实例化时，才会真正地分配内存。也就是必须实例化后才能使用结构体的字段。
 	3.1. 基本实例化:
 			结构体本身也是一种类型，我们可以像声明内置类型一样使用var关键字声明结构体类型。格式: var 结构体实例 结构体类型
 			通过 . 来访问结构体的字段（成员变量）
@@ -100,7 +100,7 @@ Go语言提供了一种自定义数据类型，可以封装多个基本数据类
 
 12. 结构体字段的可见性: 结构体中字段大写开头表示可公开访问，小写表示私有（仅在定义当前结构体的包中可访问）。
 
-13. 结构体与JSON序列化: 使用 json包中的api
+13. 结构体与JSON序列化: 使用 json包中的api。注: 私有不能被json包访问!
 	13.1. JSON序列化(结构体 -> JSON格式的字符串): jsonStr, err := json.Marshal(strcut)
 	13.2. JSON反序列化(JSON格式的字符串 -> 结构体): strcut := &person{}
 												   err = json.Unmarshal([]byte(str), strcut)
@@ -118,6 +118,7 @@ type NewInt int
 // 1.2. 类型别名
 type MyInt = int
 
+// 定义一个结构体
 type Person struct {
 	Name   string   `json:"id" db:"name" ini:"name"` // 通过指定tag实现json序列化该字段时的key
 	City   string   // json序列化是默认使用字段名作为key

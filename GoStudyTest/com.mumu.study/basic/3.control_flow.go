@@ -9,7 +9,7 @@ import "fmt"
 控制语句
 
 1. if 条件
-	if 表达式1 {
+	if [初始语句;] 表达式1 {
 		分支1
 	} else if 表达式2 {
 		分支2
@@ -47,7 +47,7 @@ import "fmt"
 5. switch case
 	Go语言规定每个switch只能有一个default分支。一个分支可以有多个值，多个case值中间使用英文逗号分隔。
 	分支还可以使用表达式，这时候switch语句后面不需要再跟判断变量
-	fallthrough语法可以执行满足条件的case的下一个case
+	fallthrough 语法可以执行满足条件的case的下一个case
 */
 
 func ifDemo() {
@@ -99,22 +99,22 @@ func forDemo2() {
 		for j := 0; j < 10; j++ {
 			if j == 2 {
 				// 设置退出标签。跳到我指定的那个标签
-				goto breakTag
+				goto gotoTag
 			}
 			fmt.Printf("%v-%v\n", i, j)
 		}
 	}
 	return
 
-breakTag: // label标签
+gotoTag: // label标签
 	fmt.Println("结束for循环")
 
 	// 2. break
-BREAKDEMO1:
+breakTag:
 	for i := 0; i < 10; i++ {
 		for j := 0; j < 10; j++ {
 			if j == 2 {
-				break BREAKDEMO1
+				break breakTag
 			}
 			fmt.Printf("%v-%v\n", i, j)
 		}
@@ -122,12 +122,12 @@ BREAKDEMO1:
 	fmt.Println("...")
 
 	// 3. continue
-forloop1:
+continueTag:
 	for i := 0; i < 5; i++ {
 		// forloop2:
 		for j := 0; j < 5; j++ {
 			if i == 2 && j == 2 {
-				continue forloop1
+				continue continueTag
 			}
 			fmt.Printf("%v-%v\n", i, j)
 		}

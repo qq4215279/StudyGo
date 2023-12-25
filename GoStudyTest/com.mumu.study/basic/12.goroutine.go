@@ -22,7 +22,7 @@ goroutine
 	Goroutine 是 Go 语言支持并发的核心，在一个Go程序中同时创建成百上千个goroutine是非常普遍的，一个goroutine会以一个很小的栈开始其生命周期，一般只需要2KB。
 		区别于操作系统线程由系统内核进行调度， goroutine 是由Go运行时（runtime）负责调度。
 		例如Go运行时会智能地将 m个goroutine 合理地分配给n个操作系统线程，实现类似m:n的调度机制，不再需要Go开发者自行在代码层面维护一个线程池。
-	Goroutine 是 Go 程序中最基本的并发执行单元。每一个 Go 程序都至少包含一个 goroutine——main goroutine，当 Go 程序启动时它会自动创建。
+	Goroutine 是 Go 程序中最基本的并发执行单元。每一个 Go 程序都至少包含一个 goroutine —— main goroutine，当 Go 程序启动时它会自动创建。
 	在Go语言编程中你不需要去自己写进程、线程、协程，你的技能包里只有一个技能——goroutine，
 		当你需要让某个任务并发执行的时候，你只需要把这个任务包装成一个函数，开启一个 goroutine 去执行这个函数就可以了，就是这么简单粗暴。
 

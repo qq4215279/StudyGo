@@ -40,7 +40,7 @@ import "fmt"
 	5.1. 全局变量: 全局变量是定义在函数外部的变量，它在程序整个运行周期内都有效。 在函数中可以访问到全局变量。eg: 在go文件里定义的变量，var = num int64 = 100
 	5.2. 局部变量: 函数内 或 语句块定义的变量(if条件判断、for循环、switch语句上使用这种定义变量)
 
-6. 函数类型与变量
+6. 函数类型 与 变量
 	6.1. 定义函数类型: 使用type关键字来定义一个函数类型，具体格式如下: type calculation func(int, int) int
 		上面语句定义了一个calculation类型，它是一种函数类型，这种函数接收两个int类型的参数并且返回一个int类型的返回值。
 		简单来说，凡是满足这个条件的函数都是calculation类型的函数，例如下面的add和sub是calculation类型。
@@ -76,9 +76,10 @@ import "fmt"
 
 */
 
-// 定义一个全局变量
+// 5.1. 定义一个全局变量
 var globalVal = 100
 
+// 6.2. 定义函数类型变量
 type calculation func(int, int) int
 
 func add(x, y int) int {
@@ -148,7 +149,7 @@ var noNameVal = func(x, y int) {
 	fmt.Println(x + y)
 }
 
-// 匿名函数demo
+// 8. 匿名函数demo
 func noNameFunction() {
 	// 1. 将匿名函数保存到变量。函数内部没有办法声明带名字的函数
 	add := func(x, y int) {
@@ -163,7 +164,7 @@ func noNameFunction() {
 
 }
 
-// 闭包函数
+// 9. 闭包函数
 func adderBibao() func(int) int {
 	var x int
 	return func(y int) int {
