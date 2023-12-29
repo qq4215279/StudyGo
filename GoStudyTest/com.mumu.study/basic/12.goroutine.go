@@ -15,13 +15,13 @@ goroutine
 
 1. 进程、线程和协程
 	进程(process): 程序在操作系统中的一次执行过程，系统进行资源分配和调度的一个独立单位。
-	线程(thread):操作系统基于进程开启的轻量级进程，是操作系统调度执行的最小单位。
+	线程(thread): 操作系统基于进程开启的轻量级进程，是操作系统调度执行的最小单位。
 	协程(coroutine): 非操作系统提供而是由用户自行创建和控制的用户态‘线程’，比线程更轻量级。
 
 2. goroutine
 	Goroutine 是 Go 语言支持并发的核心，在一个Go程序中同时创建成百上千个goroutine是非常普遍的，一个goroutine会以一个很小的栈开始其生命周期，一般只需要2KB。
 		区别于操作系统线程由系统内核进行调度， goroutine 是由Go运行时（runtime）负责调度。
-		例如Go运行时会智能地将 m个goroutine 合理地分配给n个操作系统线程，实现类似m:n的调度机制，不再需要Go开发者自行在代码层面维护一个线程池。
+		例如Go运行时会智能地将m个goroutine 合理地分配给n个操作系统线程，实现类似m:n的调度机制，不再需要Go开发者自行在代码层面维护一个线程池。
 	Goroutine 是 Go 程序中最基本的并发执行单元。每一个 Go 程序都至少包含一个 goroutine —— main goroutine，当 Go 程序启动时它会自动创建。
 	在Go语言编程中你不需要去自己写进程、线程、协程，你的技能包里只有一个技能——goroutine，
 		当你需要让某个任务并发执行的时候，你只需要把这个任务包装成一个函数，开启一个 goroutine 去执行这个函数就可以了，就是这么简单粗暴。
@@ -42,7 +42,7 @@ goroutine
 	2.3. goroutine调度
 	2.4. GOMAXPROCS
 		Go运行时的调度器使用GOMAXPROCS参数来确定需要使用多少个 OS 线程来同时执行 Go 代码。默认值是机器上的 CPU 核心数。例如在一个 8 核心的机器上，GOMAXPROCS 默认为 8。
-		Go语言中可以通过runtime.GOMAXPROCS函数设置当前程序并发时占用的 CPU逻辑核心数。
+		Go语言中可以通过runtime.GOMAXPROCS函数设置当前程序并发时占用的CPU逻辑核心数。
 
 3. channel
 	单纯地将函数并发执行是没有意义的。函数与函数间需要交换数据才能体现并发执行函数的意义。
@@ -85,7 +85,7 @@ goroutine
 		格式: value, ok := <- ch
 		其中:
 			value: 从通道中取出的值，如果通道被关闭则返回对应类型的零值。
-			ok: 通道ch关闭时返回 false，否则返回 true。
+			ok: 通道打开时返回 true，通道关闭时返回false。（通道ch关闭时返回 false，否则返回 true。）
 
 	3.8. for range接收值
 		通常我们会选择使用 for range 循环从通道中接收值，当通道被关闭后，会在通道内的所有值被接收完毕后会自动退出循环。
@@ -165,7 +165,7 @@ goroutine
 		func StoreInt64(addr *int64, val int64)
 		func StoreUint32(addr *uint32, val uint32)
 		func StoreUint64(addr *uint64, val uint64)
-		StoreUintptr(addr *uintptr, val uintptr)
+		func StoreUintptr(addr *uintptr, val uintptr)
 		func StorePointer(addr *unsafe.Pointer, val unsafe.Pointer)
 	修改操作:
 		func AddInt32(addr *int32, delta int32) (new int32)

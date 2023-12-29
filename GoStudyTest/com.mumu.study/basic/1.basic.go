@@ -53,6 +53,47 @@ import "fmt"
 			recover() 必须搭配 defer 使用。
 			defer 一定要在可能引发 panic() 的语句之前定义。
 
+7. 相关命令 F:\Code\GoSpace\bin
+	7.1. go build 编译源代码得到可执行文件。格式: go build xxx.go		eg: go build time_demo.go
+			-o 参数来指定编译后得到的可执行文件的名字。格式: go build xxx.go -o 名称.exe
+	7.2. go install 编译源代码得到可执行文件，然后将可执行文件移动到`GOPATH`的bin目录下。格式: go install xxx.go		eg: go install time_demo.go
+	7.3. go run 运行指定main方法
+	7.4. go env  查看你电脑上的GOPATH路径
+			配置goproxy: go env -w GOPROXY=https://goproxy.cn,direct
+	7.5. go version  查看安装的Go版本。
+
+8. 跨平台编译:
+	8.1. Windows 编译 Linux 可执行文件:
+		8.1.1. 使用cmd终端:
+			SET CGO_ENABLED=0  // 禁用CGO
+			SET GOOS=linux  // 目标平台是linux
+			SET GOARCH=amd64  // 目标处理器架构是amd64
+			go build
+		8.1.2. 使用PowerShell终端:
+			$ENV:CGO_ENABLED=0
+			$ENV:GOOS="linux"
+			$ENV:GOARCH="amd64"
+			go build
+	8.2. Windows 编译 Mac 可执行文件:
+		8.2.1. 使用cmd终端:
+			SET CGO_ENABLED=0
+			SET GOOS=darwin
+			SET GOARCH=amd64
+			go build
+		8.2.2. 使用PowerShell终端:
+			$ENV:CGO_ENABLED=0
+			$ENV:GOOS="darwin"
+			$ENV:GOARCH="amd64"
+			go build
+	8.3. Mac 编译 Linux 可执行文件:
+		CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+	8.4. Mac 编译 Windows 可执行文件:
+		CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+	8.5. Linux 编译 Windows 可执行文件:
+		CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
+	8.6. Linux 编译 Mac 可执行文件:
+		CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build
+
 */
 
 // 1. 变量 ============================>
