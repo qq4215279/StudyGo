@@ -38,8 +38,8 @@ import "fmt"
 	delete(m map[Type]Type1, key Type)
 	cap(v Type) int
 	len(v Type) int	  用来求长度，比如: string、array、slice、map、channel
-	new(Type) *Type	  用来分配内存，主要用来分配值类型，比如int、struct。返回的是指针
-	make(t Type, size ...IntegerType) Type	  用来分配内存，主要用来分配引用类型，比如chan、map、slice
+	new(Type) *Type	  用来分配内存，主要用来分配值类型，eg: int 数组 struct。返回的是指针
+	make(t Type, size ...IntegerType) Type	  用来分配内存，主要用来分配引用类型，比如 slice map chan
 
 	complex(r, i FloatType) ComplexType
 	imag(c ComplexType) FloatType
