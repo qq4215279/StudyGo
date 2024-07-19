@@ -142,6 +142,10 @@ func main() {
 	f2 := add                        // 将函数add赋值给变量f
 	fmt.Printf("type of f:%T\n", f2) // type of f:func(int, int) int
 	fmt.Println(f2(10, 20))          // 像调用add一样调用f
+
+	// bibao := multiBibao()
+	// fmt.Println("multiBibao: ", bibao(100, 10))
+	fmt.Println("multiBibao: ", multiBibao()(100, 10))
 }
 
 // 匿名函数变量
@@ -169,6 +173,14 @@ func adderBibao() func(int) int {
 	var x int
 	return func(y int) int {
 		x += y
+		return x
+	}
+}
+
+// 9.闭包函数2
+func multiBibao() calculation {
+	return func(x, y int) int {
+		x *= y
 		return x
 	}
 }
